@@ -140,28 +140,6 @@ module.exports = {
             },
         },
         {
-            // This plugin must be placed last in your list of plugins to ensure that it can query
-            // all the GraphQL data.
-            resolve: 'gatsby-plugin-algolia',
-            options: {
-                appId: process.env.GATSBY_ALGOLIA_APP_ID,
-                // Use Admin API key without GATSBY_ prefix, so that the key isn't exposed in the application.
-                // Tip: use Search API key with GATSBY_ prefix to access the service from within components.
-                apiKey: algoliaApiKey,
-                indexName: algoliaIndex, // for all queries
-                // eslint-disable-next-line global-require
-                queries: require("./src/utils/algolia-queries"),
-                settings: {
-                    // optional, any index settings
-                    searchableAttributes: [
-                        'value',
-                    ],
-                },
-                enablePartialUpdates: true,
-                matchFields: ['slug', 'modified'],
-            },
-        },
-        {
             resolve: 'gatsby-plugin-segment-js',
             options: {
                 prodKey: process.env.SEGMENT_PRODUCTION_WRITE_KEY,
